@@ -9,6 +9,12 @@ public class Producto {
     public Producto() {
     }
 
+    public Producto(String nombre, Proveedor proveedor) {
+        this.nombre = nombre;
+        this.proveedor = proveedor;
+        this.existencias = 0;
+    }
+
     public String getNombre() {
         return nombre;
     }
