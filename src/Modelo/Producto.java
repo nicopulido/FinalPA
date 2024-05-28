@@ -1,12 +1,33 @@
 package Modelo;
 
 public class Producto {
+
+    private static int ultimoId = 0;
     private String nombre;
     private Proveedor proveedor;
     private int existencias;
     private int idProducto;
 
     public Producto() {
+    }
+    
+    //Constructor de producto para la aplicación
+    public Producto(String nombre, Proveedor proveedor) {
+        this.nombre = nombre;
+        this.proveedor = proveedor;
+        this.existencias = 0;
+        this.idProducto = ++Producto.ultimoId;
+    }
+    
+    //constructor de producto para la base de datos
+    public Producto(String nombre, Proveedor proveedor, int existencias, int idProducto) {
+        this.nombre = nombre;
+        this.proveedor = proveedor;
+        this.existencias = existencias;
+        this.idProducto = idProducto;
+        if (idProducto > Producto.ultimoId) {
+            ultimoId = idProducto;
+        }
     }
 
     public String getNombre() {
