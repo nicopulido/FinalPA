@@ -48,4 +48,6 @@ public class Controlador {
         this.bodega.getProductos().add(producto);
     }
     
+    //pequeño cambio en nicolas
+    
 }
