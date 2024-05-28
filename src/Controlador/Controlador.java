@@ -41,4 +41,6 @@ public class Controlador {
         return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
     }
     
+    //crear rama nicolas
+    
 }
