@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Bodega;
+import Modelo.Encargado;
 import Vista.Vista;
 
 public class Controlador {
@@ -35,5 +36,9 @@ public class Controlador {
         this.vista = vista;
     }
     
+    public boolean validarUsuario(String usuario, String pin){
+        Encargado encargado = this.bodega.getEncargado();
+        return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
+    }
     
 }
