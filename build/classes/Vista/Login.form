@@ -159,9 +159,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\luisf\Downloads\favicon.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="ADMIN LOGIN"/>
           </Properties>
           <Constraints>
@@ -173,9 +170,6 @@
         <Component class="javax.swing.JLabel" name="labelLogo">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\luisf\OneDrive\Documentos\UD\AVANZADA\Logotipo.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
           <Constraints>
@@ -205,9 +199,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelFondoLogo">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\luisf\Downloads\city.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
           <Constraints>
