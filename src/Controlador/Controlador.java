@@ -7,6 +7,7 @@ import Modelo.Proveedor;
 import Vista.Vista;
 
 public class Controlador {
+
     private Bodega bodega;
     private ControladorPersistencia persistencia;
     private Vista vista;
@@ -37,23 +38,26 @@ public class Controlador {
     public void setVista(Vista vista) {
         this.vista = vista;
     }
-    
-    public boolean validarUsuario(String usuario, String pin){
+
+    public boolean validarUsuario(String usuario, String pin) {
         Encargado encargado = this.bodega.getEncargado();
         return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
     }
-    
 
-    //prueba para ver si cambió algo
-
-    public void crearProducto(String nombre, Proveedor proveedor){
-        Producto producto = new Producto(nombre,proveedor);
+    public void crearProducto(String nombre, Proveedor proveedor) {
+        Producto producto = new Producto(nombre, proveedor);
         this.bodega.getProductos().add(producto);
     }
-    
 
-    //pequeño cambio en nicolas
-
-    //cambio main
+    public void modificarNombreProducto(String nombre, Producto productoAModificar) {
+        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setNombre(nombre);
+    }
     
+    public void modificarProveedorProducto(Proveedor proveedor, Producto productoAModificar){
+        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setProveedor(proveedor);
+    }
+    
+    public void modificarExistenciasProducto(int existencias, Producto productoAModificar){
+        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setExistencias(existencias);
+    }
 }
