@@ -2,6 +2,8 @@ package Controlador;
 
 import Modelo.Bodega;
 import Modelo.Encargado;
+import Modelo.Producto;
+import Modelo.Proveedor;
 import Vista.Vista;
 
 public class Controlador {
@@ -41,6 +43,9 @@ public class Controlador {
         return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
     }
     
-    //crear rama nicolas
+    public void crearProducto(String nombre, Proveedor proveedor){
+        Producto producto = new Producto(nombre,proveedor);
+        this.bodega.getProductos().add(producto);
+    }
     
 }
