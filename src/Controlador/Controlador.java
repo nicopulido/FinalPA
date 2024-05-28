@@ -51,4 +51,6 @@ public class Controlador {
         this.bodega.getProductos().add(producto);
     }
     
+    //cambio main
+    
 }
