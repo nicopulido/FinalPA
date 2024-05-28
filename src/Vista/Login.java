@@ -96,12 +96,10 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\Downloads\\favicon.png")); // NOI18N
         jLabel4.setText("ADMIN LOGIN");
         background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 220, 40));
 
         labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\OneDrive\\Documentos\\UD\\AVANZADA\\Logotipo.png")); // NOI18N
         labelLogo.setText("jLabel1");
         background.add(labelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 157, 106));
 
@@ -111,7 +109,6 @@ public class Login extends javax.swing.JFrame {
         labelNomEmp.setText("LS SU PROOVEDOR S.A.S.");
         background.add(labelNomEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 229, 46));
 
-        labelFondoLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\Downloads\\city.png")); // NOI18N
         labelFondoLogo.setText("jLabel2");
         background.add(labelFondoLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 280, 470));
 
