@@ -43,11 +43,17 @@ public class Controlador {
         return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
     }
     
+
+    //prueba para ver si cambió algo
+
     public void crearProducto(String nombre, Proveedor proveedor){
         Producto producto = new Producto(nombre,proveedor);
         this.bodega.getProductos().add(producto);
     }
     
+
     //pequeño cambio en nicolas
+
+    //cambio main
     
 }
