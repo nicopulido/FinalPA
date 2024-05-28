@@ -1,18 +1,24 @@
 package Controlador;
 
 import Modelo.Bodega;
+import Modelo.Cliente;
 import Modelo.Encargado;
 import Modelo.Producto;
 import Modelo.Proveedor;
 import Vista.Vista;
+import java.util.ArrayList;
 
 public class Controlador {
 
     private Bodega bodega;
     private ControladorPersistencia persistencia;
     private Vista vista;
+    private ArrayList<Cliente> clientes;
+    private ArrayList<Proveedor> proveedores;
 
-    public Controlador() {
+    public Controlador(){
+        //desde el principio se obtienen los datos de la base de datos
+        
     }
 
     public Bodega getBodega() {
@@ -47,17 +53,35 @@ public class Controlador {
     public void crearProducto(String nombre, Proveedor proveedor) {
         Producto producto = new Producto(nombre, proveedor);
         this.bodega.getProductos().add(producto);
+        //método para dejar el producto en la base de datos
     }
 
     public void modificarNombreProducto(String nombre, Producto productoAModificar) {
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setNombre(nombre);
+        //método para morificar producto en la base de datos
     }
     
     public void modificarProveedorProducto(Proveedor proveedor, Producto productoAModificar){
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setProveedor(proveedor);
+        //método para morificar producto en la base de datos
     }
     
     public void modificarExistenciasProducto(int existencias, Producto productoAModificar){
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setExistencias(existencias);
+        //método para morificar producto en la base de datos
     }
+    
+    public ArrayList<Producto> obtenerProductos(){
+        return this.bodega.getProductos();
+    }
+
+    public ArrayList<Cliente> obtenerClientes() {
+        return this.clientes;
+    }
+
+    public ArrayList<Proveedor> obtenerProveedores() {
+        return this.proveedores;
+    }
+    
+    
 }
