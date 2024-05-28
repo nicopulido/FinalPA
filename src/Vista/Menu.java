@@ -43,16 +43,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\Downloads\\point vert.png")); // NOI18N
         jLabel5.setText("En linea");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 130, 20));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\OneDrive\\Documentos\\UD\\AVANZADA\\Logotipo.png")); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 150, 80));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\Downloads\\fondo-azul-degradado-8259614_640.png")); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 176));
 
@@ -62,7 +59,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setText("LS SU PROVEEDOR S.A.S.");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 740, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\luisf\\Downloads\\fondo-azul-degradado-8259614_1280.png")); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 780, 90));
 
