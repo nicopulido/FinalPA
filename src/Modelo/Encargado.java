@@ -8,6 +8,12 @@ public class Encargado {
     public Encargado() {
     }
 
+    public Encargado(String nombre, String usuario, String pin) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.pin = pin;
+    }
+
     public String getNombre() {
         return nombre;
     }

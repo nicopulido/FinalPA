@@ -7,32 +7,43 @@ import Modelo.Producto;
 import Constants.Constants;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBQuerys {
 
-    ResultSet resultSet;
 
     // SELECT TODOS LOS PRODUCTOS
-    public void allProducts() {
+    public ArrayList<Producto> allProducts() {
+        ArrayList<Producto> productos = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
             Statement getProductos = connection.createStatement();
-            resultSet = getProductos.executeQuery("SELECT * FROM " + Constants.DB_TABLE_PRODUCTOS);
+            ResultSet resultSet = getProductos.executeQuery("SELECT * FROM " + Constants.DB_TABLE_PRODUCTOS);
 
-            System.out.println("ID | CODIGO | NOMBRE | CANTIDAD | PROVEEDOR |");
+            //System.out.println("ID | CODIGO | NOMBRE | CANTIDAD | PROVEEDOR |");
             while (resultSet.next()) {
-                System.out.print(resultSet.getInt("id_producto") + " - ");
+                /*System.out.print(resultSet.getInt("id_producto") + " - ");
                 System.out.print(resultSet.getInt("cod") + " - ");
                 System.out.print(resultSet.getString("nombre") + " - ");
-                System.out.print(resultSet.getString("cantidad") + " - ");
+                System.out.print(resultSet.getInt("cantidad") + " - ");
                 System.out.println(resultSet.getString("proveedor"));
+*/
+                String nombre = resultSet.getString("nombre");
+                int cod = resultSet.getInt("cod");
+                int idProducto = resultSet.getInt("id_producto");
+                int cantidad = resultSet.getInt("cantidad");
+                String nombreProveedor = resultSet.getString("proveedor");
+                Proveedor proveedor = this.buscarProveedorNombre(nombreProveedor);
+                Producto producto = new Producto(cod, nombre, proveedor, cantidad, idProducto);
+                productos.add(producto);
             }
 
         } catch (SQLException e) {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
         }
+        return productos;
     }
 
     // SELECT TODOS LOS CLIENTES
@@ -41,7 +52,7 @@ public class DBQuerys {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
             Statement getClientes = connection.createStatement();
-            resultSet = getClientes.executeQuery("SELECT * FROM " + Constants.DB_TABLE_CLIENTES);
+            ResultSet resultSet = getClientes.executeQuery("SELECT * FROM " + Constants.DB_TABLE_CLIENTES);
 
             if (resultSet.isBeforeFirst()) {
                 System.out.println("ID | CC |  NOMBRE |");
@@ -64,7 +75,7 @@ public class DBQuerys {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
             Statement getProveedores = connection.createStatement();
-            resultSet = getProveedores.executeQuery("SELECT * FROM " + Constants.DB_TABLE_PROVEEDORES);
+            ResultSet resultSet = getProveedores.executeQuery("SELECT * FROM " + Constants.DB_TABLE_PROVEEDORES);
 
             System.out.println("ID | NIT |  NOMBRE |");
             while (resultSet.next()) {
@@ -92,7 +103,6 @@ public class DBQuerys {
             ingresarProducto.setInt(3, product.getCantidad());
             ingresarProducto.setString(4, product.getProveedor().getNombre());
 
-
             ingresarProducto.executeUpdate();
 
         } catch (SQLException e) {
@@ -118,7 +128,6 @@ public class DBQuerys {
             System.out.println(e.getMessage());
         }
     }
-
 
     // INGRESAR CLIENTE A LA BASE DE DATOS
     public void insertCliente(Cliente cliente) {
@@ -146,7 +155,7 @@ public class DBQuerys {
             PreparedStatement buscarProducto = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_PRODUCTOS + " WHERE nombre = ?");
             buscarProducto.setString(1, nombre);
 
-            resultSet = buscarProducto.executeQuery();
+            ResultSet resultSet = buscarProducto.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 while (resultSet.next()) {
                     System.out.print(resultSet.getInt("id_producto") + " - ");
@@ -173,7 +182,7 @@ public class DBQuerys {
             PreparedStatement buscarProducto = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_PRODUCTOS + " WHERE cod = ?");
             buscarProducto.setInt(1, codigo);
 
-            resultSet = buscarProducto.executeQuery();
+            ResultSet resultSet = buscarProducto.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 while (resultSet.next()) {
                     System.out.print(resultSet.getInt("id_producto") + " - ");
@@ -193,58 +202,62 @@ public class DBQuerys {
     }
 
 //     BUSCAR PROVEEDOR POR NOMBRE
-//    public void buscarProveedorNombre(String nombre){
-//        try {
-//            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
-//
-//            PreparedStatement buscarProducto = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_PROVEEDORES + " WHERE nombre = ?");
-//            buscarProducto.setString(1, nombre);
-//
-//            resultSet = buscarProducto.executeQuery();
-//            if (resultSet.isBeforeFirst()){
-//                System.out.println("ID | NIT |  NOMBRE |");
-//                while (resultSet.next()) {
-//                    System.out.print(resultSet.getInt("id_proveedor") + " - ");
-//                    System.out.print(resultSet.getInt("NIT") + " - ");
-//                    System.out.println(resultSet.getString("nombre"));
-//                }
-//            } else {
-//                System.out.println("No se encontró el producto");
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error: ");
-//            System.out.println(e.getMessage());
-//        }
-//    }
-//
-//    // BUSCAR PRODUCTO POR NIT
-//    public void buscarProveedorNIT(int nit){
-//        try {
-//            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
-//
-//            PreparedStatement buscarProducto = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_PROVEEDORES + " WHERE NIT = ?");
-//            buscarProducto.setInt(1, nit);
-//
-//            resultSet = buscarProducto.executeQuery();
-//            // El if sirve para comprobar si el result devolvió algo (una row)
-//            if (resultSet.isBeforeFirst()){
-//                System.out.println("ID | NIT |  NOMBRE |");
-//                while (resultSet.next()) {
-//                    System.out.print(resultSet.getInt("id_proveedor") + " - ");
-//                    System.out.print(resultSet.getInt("NIT") + " - ");
-//                    System.out.println(resultSet.getString("nombre"));
-//                }
-//            } else {
-//                System.out.println("No se encontró el producto");
-//            }
-//
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error: ");
-//            System.out.println(e.getMessage());
-//        }
-//    }
+    public Proveedor buscarProveedorNombre(String nombre) {
+        Proveedor proveedor = new Proveedor(0, "", 0);
+        try {
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+
+            PreparedStatement buscarProducto = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_PROVEEDORES + " WHERE nombre = ?");
+            buscarProducto.setString(1, nombre);
+
+            ResultSet resultSet = buscarProducto.executeQuery();
+            if (resultSet.isBeforeFirst()) {
+                //System.out.println("ID | NIT |  NOMBRE |");
+                while (resultSet.next()) {
+                    /*System.out.print(resultSet.getInt("id_proveedor") + " - ");
+                    System.out.print(resultSet.getInt("NIT") + " - ");
+                    System.out.println(resultSet.getString("nombre"));*/
+                    proveedor.setNIT(resultSet.getInt("NIT"));
+                    proveedor.setIdProveedor(resultSet.getInt("id_proveedor"));
+                    proveedor.setNombre(resultSet.getString("nombre"));
+                }
+            } else {
+                System.out.println("No se encontró el producto");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: ");
+            System.out.println(e.getMessage());
+        }
+        return proveedor;
+    }
+
+    // BUSCAR PRODUCTO POR NIT
+    public void buscarProveedorNIT(int nit) {
+        try {
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+
+            PreparedStatement buscarProducto = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_PROVEEDORES + " WHERE NIT = ?");
+            buscarProducto.setInt(1, nit);
+
+            ResultSet resultSet = buscarProducto.executeQuery();
+            // El if sirve para comprobar si el result devolvió algo (una row)
+            if (resultSet.isBeforeFirst()) {
+                System.out.println("ID | NIT |  NOMBRE |");
+                while (resultSet.next()) {
+                    System.out.print(resultSet.getInt("id_proveedor") + " - ");
+                    System.out.print(resultSet.getInt("NIT") + " - ");
+                    System.out.println(resultSet.getString("nombre"));
+                }
+            } else {
+                System.out.println("No se encontró el producto");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: ");
+            System.out.println(e.getMessage());
+        }
+    }
 
     // EDITAR NOMBRE DEL PRODUCTO
     public void editarNombreProducto(String nombre, int codigo) {

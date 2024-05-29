@@ -8,6 +8,7 @@ public class Bodega {
     private ArrayList<Producto> productos;
 
     public Bodega() {
+        this.productos = new ArrayList<Producto>();
     }
     
     
