@@ -1,11 +1,25 @@
 package Modelo;
 
 public class Cliente {
+    private int cc;
     private String nombre;
-    private String direccion;
-    private int idCliente;
+    private int cantidad;
+
+    public Cliente(int cc, String nombre, int cantidad) {
+        this.cc = cc;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+    }
 
     public Cliente() {
+    }
+
+    public int getCc() {
+        return cc;
+    }
+
+    public void setCc(int cc) {
+        this.cc = cc;
     }
 
     public String getNombre() {
@@ -16,19 +30,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }
