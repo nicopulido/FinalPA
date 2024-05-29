@@ -7,9 +7,6 @@ import Modelo.Producto;
 import Modelo.Proveedor;
 import Vista.Vista;
 import java.util.ArrayList;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Controlador {
 
