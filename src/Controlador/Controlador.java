@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Controlador {
 
     private Bodega bodega;
-    private ControladorPersistencia persistencia;
+    private DBQuerys persistencia;
     private Vista vista;
     private ArrayList<Cliente> clientes;
     private ArrayList<Proveedor> proveedores;
@@ -29,11 +29,11 @@ public class Controlador {
         this.bodega = bodega;
     }
 
-    public ControladorPersistencia getPersistencia() {
+    public DBQuerys getPersistencia() {
         return persistencia;
     }
 
-    public void setPersistencia(ControladorPersistencia persistencia) {
+    public void setPersistencia(DBQuerys persistencia) {
         this.persistencia = persistencia;
     }
 
@@ -67,7 +67,7 @@ public class Controlador {
     }
     
     public void modificarExistenciasProducto(int existencias, Producto productoAModificar){
-        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setExistencias(existencias);
+        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setCantidad(existencias);
         //método para morificar producto en la base de datos
     }
     
