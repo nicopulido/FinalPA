@@ -1,8 +1,5 @@
-build/Constants
-build/Controlador
-build/Modelo
-build/vista
-src/Constants
-src/Constants/Constants.java
+/build/*
+!/build/Images/
+/src/Constants/
 /nbproject/
 /test/
