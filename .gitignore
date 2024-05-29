@@ -1,5 +1,7 @@
 /build/*
 !/build/Images/
+!/build/Images/**
 /src/Constants/
 /nbproject/
 /test/
+
