@@ -57,19 +57,18 @@ public class Controlador {
         return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
     }
 
-    public void crearProducto(String nombre, Proveedor proveedor) {
-        Producto producto = new Producto(nombre, proveedor);
+    public void crearProducto(int codigo, String nombre, int indexProveedor) {
+        String nombreProveedor = this.proveedores.get(indexProveedor).getNombre();
+        int NITProveedor = this.proveedores.get(indexProveedor).getNIT();
+        int idProveedor = this.proveedores.get(indexProveedor).getIdProveedor();
+        Proveedor proveedor = new Proveedor(NITProveedor, nombreProveedor, idProveedor);
+        Producto producto = new Producto(codigo, nombre, proveedor);
         this.bodega.getProductos().add(producto);
         this.persistencia.insertProducto(producto);
     }
 
     public void modificarNombreProducto(String nombre, Producto productoAModificar) {
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setNombre(nombre);
-        //método para morificar producto en la base de datos
-    }
-
-    public void modificarProveedorProducto(Proveedor proveedor, Producto productoAModificar) {
-        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setProveedor(proveedor);
         //método para morificar producto en la base de datos
     }
 
