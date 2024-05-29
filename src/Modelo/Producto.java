@@ -71,4 +71,17 @@ public class Producto {
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Producto{");
+        sb.append("cod=").append(cod);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", proveedor=").append(proveedor);
+        sb.append(", cantidad=").append(cantidad);
+        sb.append(", idProducto=").append(idProducto);
+        sb.append('}');
+        return sb.toString();
+    }
 }

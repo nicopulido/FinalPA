@@ -16,9 +16,16 @@ public class Controlador {
     private ArrayList<Cliente> clientes;
     private ArrayList<Proveedor> proveedores;
 
-    public Controlador(){
+    public Controlador() {
         //desde el principio se obtienen los datos de la base de datos
-        
+        this.persistencia = new DBQuerys();
+        this.bodega = new Bodega();
+        Encargado encargado = new Encargado("Elton Tito", "prueba", "prueba");
+        this.bodega.setEncargado(encargado);
+        this.bodega.setDireccion("Carrera 7 # 40B - 53");
+        this.bodega.setProductos(this.persistencia.allProducts());
+        this.vista = new Vista(this);
+        System.out.println(this.bodega.getProductos());
     }
 
     public Bodega getBodega() {
@@ -53,25 +60,25 @@ public class Controlador {
     public void crearProducto(String nombre, Proveedor proveedor) {
         Producto producto = new Producto(nombre, proveedor);
         this.bodega.getProductos().add(producto);
-        //método para dejar el producto en la base de datos
+        this.persistencia.insertProducto(producto);
     }
 
     public void modificarNombreProducto(String nombre, Producto productoAModificar) {
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setNombre(nombre);
         //método para morificar producto en la base de datos
     }
-    
-    public void modificarProveedorProducto(Proveedor proveedor, Producto productoAModificar){
+
+    public void modificarProveedorProducto(Proveedor proveedor, Producto productoAModificar) {
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setProveedor(proveedor);
         //método para morificar producto en la base de datos
     }
-    
-    public void modificarExistenciasProducto(int existencias, Producto productoAModificar){
+
+    public void modificarExistenciasProducto(int existencias, Producto productoAModificar) {
         this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setCantidad(existencias);
         //método para morificar producto en la base de datos
     }
-    
-    public ArrayList<Producto> obtenerProductos(){
+
+    public ArrayList<Producto> obtenerProductos() {
         return this.bodega.getProductos();
     }
 
@@ -82,6 +89,5 @@ public class Controlador {
     public ArrayList<Proveedor> obtenerProveedores() {
         return this.proveedores;
     }
-    
-    
+
 }
