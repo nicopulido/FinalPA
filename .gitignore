@@ -1,7 +1,9 @@
-/build/*
-!/build/Images/
-!/build/Images/**
 /src/Constants/
 /nbproject/
 /test/
-
+/build/classes/Constants/
+/build/classes/Controlador/
+/build/classes/Modelo/
+/build/classes/Vista/
+.netbeans_automatic_build
+.netbeans_update_resources
