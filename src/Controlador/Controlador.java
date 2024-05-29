@@ -24,6 +24,7 @@ public class Controlador {
         this.bodega.setEncargado(encargado);
         this.bodega.setDireccion("Carrera 7 # 40B - 53");
         this.bodega.setProductos(this.persistencia.allProducts());
+        this.vista = new Vista(this);
         System.out.println(this.bodega.getProductos());
     }
 
