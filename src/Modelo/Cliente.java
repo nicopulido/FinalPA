@@ -8,7 +8,7 @@ public class Cliente {
     public Cliente(int cc, String nombre, int idCliente) {
         this.cc = cc;
         this.nombre = nombre;
-        this.idCliente = this.idCliente; 
+        this.idCliente = idCliente; 
     }
 
     public Cliente() {
