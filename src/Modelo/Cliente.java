@@ -3,12 +3,12 @@ package Modelo;
 public class Cliente {
     private int cc;
     private String nombre;
-    private int cantidad;
+    private int idCliente;
 
-    public Cliente(int cc, String nombre, int cantidad) {
+    public Cliente(int cc, String nombre, int idCliente) {
         this.cc = cc;
         this.nombre = nombre;
-        this.cantidad = cantidad;
+        this.idCliente = this.idCliente; 
     }
 
     public Cliente() {
@@ -30,11 +30,12 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
+
 }

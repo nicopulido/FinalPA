@@ -21,6 +21,7 @@ public class Controlador {
         this.persistencia = new DBQuerys();
         this.bodega = new Bodega();
         this.proveedores = this.persistencia.allProveedores();
+        this.clientes = this.persistencia.allClientes();
         Encargado encargado = new Encargado("Elton Tito", "prueba", "prueba");
         this.bodega.setEncargado(encargado);
         this.bodega.setDireccion("Carrera 7 # 40B - 53");

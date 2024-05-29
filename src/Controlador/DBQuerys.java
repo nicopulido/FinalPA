@@ -47,7 +47,8 @@ public class DBQuerys {
     }
 
     // SELECT TODOS LOS CLIENTES
-    public void allClientes() {
+    public ArrayList<Cliente> allClientes() {
+        ArrayList<Cliente> clientes = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
@@ -58,8 +59,13 @@ public class DBQuerys {
                 System.out.println("ID | CC |  NOMBRE |");
                 while (resultSet.next()) {
                     System.out.print(resultSet.getInt("id_cliente") + " - ");
-                    System.out.print(resultSet.getString("cc") + " - ");
+                    System.out.print(resultSet.getInt("cc") + " - ");
                     System.out.println(resultSet.getString("nombre"));
+                    int idCliente = resultSet.getInt("id_cliente");
+                    int cc = resultSet.getInt("cc");
+                    String nombre = resultSet.getString("nombre");
+                    Cliente cliente = new Cliente(cc, nombre, idCliente);
+                    clientes.add(cliente);
                 }
             }
 
@@ -67,6 +73,7 @@ public class DBQuerys {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
         }
+        return clientes;
     }
 
     // SELECT TODOS LOS PROVEEDORES
