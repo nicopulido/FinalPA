@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import java.awt.Color;
 
 /**
@@ -12,11 +13,11 @@ import java.awt.Color;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    public Login() {
+    private Controlador controlador;
+    
+    public Login(Controlador controlador) {
         initComponents();
+        this.controlador = controlador;
     }
 
     /**
@@ -134,7 +135,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cajaUserActionPerformed
 
     private void botonIngresoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresoLoginActionPerformed
-        // TODO add your handling code here:
+
+        if(this.controlador.validarUsuario(cajaUser.getText(),cajaContraPass.getText())){
+            this.dispose();
+            this.controlador.getVista().getMenu().setVisible(true);
+        }
     }//GEN-LAST:event_botonIngresoLoginActionPerformed
 
     private void cajaUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cajaUserMousePressed
@@ -178,4 +183,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelNomEmp;
     // End of variables declaration//GEN-END:variables
+
 }
