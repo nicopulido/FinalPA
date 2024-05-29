@@ -13,7 +13,8 @@ public class Producto {
     }
     
     //Constructor de producto para la aplicación
-    public Producto(String nombre, Proveedor proveedor) {
+    public Producto(int codigo, String nombre, Proveedor proveedor) {
+        this.cod = codigo;
         this.nombre = nombre;
         this.proveedor = proveedor;
         this.cantidad = 0;

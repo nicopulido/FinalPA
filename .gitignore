@@ -4,3 +4,5 @@ build/Modelo
 build/vista
 src/Constants
 src/Constants/Constants.java
+/nbproject/
+/test/
