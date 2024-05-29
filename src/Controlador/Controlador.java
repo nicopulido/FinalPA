@@ -18,7 +18,6 @@ public class Controlador {
 
     public Controlador(){
         //desde el principio se obtienen los datos de la base de datos
-        
     }
 
     public Bodega getBodega() {
@@ -71,6 +70,16 @@ public class Controlador {
         //método para morificar producto en la base de datos
     }
     
+    /*public void ingresarClientes(nombre){
+        Cliente(nombre) cliente;
+        this.clientes.add(cliente)
+        persistencia.insertCliente(Cliente)
+    }
+    
+    public arrayList<Cliente>(Resultset x){
+        new array list
+    }
+    */
     public ArrayList<Producto> obtenerProductos(){
         return this.bodega.getProductos();
     }

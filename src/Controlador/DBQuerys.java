@@ -13,7 +13,7 @@ public class DBQuerys {
     ResultSet resultSet;
 
     // SELECT TODOS LOS PRODUCTOS
-    public void allProducts() {
+    public ResultSet allProducts() {
         try {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
@@ -33,10 +33,11 @@ public class DBQuerys {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
         }
+        return resultSet;
     }
 
     // SELECT TODOS LOS CLIENTES
-    public void allClientes() {
+    public ResultSet allClientes() {
         try {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
@@ -56,10 +57,11 @@ public class DBQuerys {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
         }
+        return resultSet;
     }
 
     // SELECT TODOS LOS PROVEEDORES
-    public void allProveedores() {
+    public ResultSet allProveedores() {
         try {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
@@ -77,6 +79,8 @@ public class DBQuerys {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
         }
+
+        return resultSet;
     }
 
     // INGRESAR PRODCUTO A LA BASE DE DATOS
@@ -91,7 +95,6 @@ public class DBQuerys {
             ingresarProducto.setString(2, product.getNombre());
             ingresarProducto.setInt(3, product.getCantidad());
             ingresarProducto.setString(4, product.getProveedor().getNombre());
-
 
             ingresarProducto.executeUpdate();
 
@@ -118,7 +121,6 @@ public class DBQuerys {
             System.out.println(e.getMessage());
         }
     }
-
 
     // INGRESAR CLIENTE A LA BASE DE DATOS
     public void insertCliente(Cliente cliente) {
@@ -245,7 +247,6 @@ public class DBQuerys {
 //            System.out.println(e.getMessage());
 //        }
 //    }
-
     // EDITAR NOMBRE DEL PRODUCTO
     public void editarNombreProducto(String nombre, int codigo) {
         try {
