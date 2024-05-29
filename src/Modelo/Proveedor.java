@@ -1,11 +1,23 @@
 package Modelo;
 
 public class Proveedor {
+    private int NIT;
     private String nombre;
-    private String direccion;
-    private int idProveedor;
 
     public Proveedor() {
+    }
+
+    public Proveedor(int NIT, String nombre) {
+        this.NIT = NIT;
+        this.nombre = nombre;
+    }
+
+    public int getNIT() {
+        return NIT;
+    }
+
+    public void setNIT(int NIT) {
+        this.NIT = NIT;
     }
 
     public String getNombre() {
@@ -14,21 +26,5 @@ public class Proveedor {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public int getIdProveedor() {
-        return idProveedor;
-    }
-
-    public void setIdProveedor(int idProveedor) {
-        this.idProveedor = idProveedor;
     }
 }

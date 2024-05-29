@@ -3,9 +3,10 @@ package Modelo;
 public class Producto {
 
     private static int ultimoId = 0;
+    private int cod;
     private String nombre;
     private Proveedor proveedor;
-    private int existencias;
+    private int cantidad;
     private int idProducto;
 
     public Producto() {
@@ -15,19 +16,28 @@ public class Producto {
     public Producto(String nombre, Proveedor proveedor) {
         this.nombre = nombre;
         this.proveedor = proveedor;
-        this.existencias = 0;
+        this.cantidad = 0;
         this.idProducto = ++Producto.ultimoId;
     }
     
     //constructor de producto para la base de datos
-    public Producto(String nombre, Proveedor proveedor, int existencias, int idProducto) {
+    public Producto(int codigo, String nombre, Proveedor proveedor, int cantidad, int idProducto) {
+        this.cod = codigo;
         this.nombre = nombre;
         this.proveedor = proveedor;
-        this.existencias = existencias;
+        this.cantidad = cantidad;
         this.idProducto = idProducto;
         if (idProducto > Producto.ultimoId) {
             ultimoId = idProducto;
         }
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 
     public String getNombre() {
@@ -46,12 +56,12 @@ public class Producto {
         this.proveedor = proveedor;
     }
 
-    public int getExistencias() {
-        return existencias;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setExistencias(int existencias) {
-        this.existencias = existencias;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public int getIdProducto() {
