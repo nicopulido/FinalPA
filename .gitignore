@@ -1,3 +1,5 @@
 build/
 src/Constants
 src/Constants/Constants.java
+/nbproject/
+/test/
