@@ -20,12 +20,12 @@ public class Controlador {
         //desde el principio se obtienen los datos de la base de datos
         this.persistencia = new DBQuerys();
         this.bodega = new Bodega();
+        this.proveedores = this.persistencia.allProveedores();
         Encargado encargado = new Encargado("Elton Tito", "prueba", "prueba");
         this.bodega.setEncargado(encargado);
         this.bodega.setDireccion("Carrera 7 # 40B - 53");
         this.bodega.setProductos(this.persistencia.allProducts());
         this.vista = new Vista(this);
-        System.out.println(this.bodega.getProductos());
     }
 
     public Bodega getBodega() {
@@ -56,7 +56,7 @@ public class Controlador {
         Encargado encargado = this.bodega.getEncargado();
         return encargado.getUsuario().equals(usuario) && encargado.getPin().equals(pin);
     }
-
+    
     public void crearProducto(int codigo, String nombre, int indexProveedor) {
         String nombreProveedor = this.proveedores.get(indexProveedor).getNombre();
         int NITProveedor = this.proveedores.get(indexProveedor).getNIT();
@@ -66,15 +66,18 @@ public class Controlador {
         this.bodega.getProductos().add(producto);
         this.persistencia.insertProducto(producto);
     }
-
-    public void modificarNombreProducto(String nombre, Producto productoAModificar) {
-        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setNombre(nombre);
-        //método para morificar producto en la base de datos
+    
+    //método para modificar el nombre del producto desde el index de la lista de productos
+    public void modificarNombreProducto(String nombre, int indexProducto) {
+        int codigoProducto = this.getBodega().getProductos().get(indexProducto).getCod();
+        this.bodega.getProductos().get(indexProducto).setNombre(nombre);
+        this.persistencia.editarNombreProducto(nombre, codigoProducto);
     }
 
-    public void modificarExistenciasProducto(int existencias, Producto productoAModificar) {
-        this.bodega.getProductos().get(this.bodega.getProductos().indexOf(productoAModificar)).setCantidad(existencias);
-        //método para morificar producto en la base de datos
+    public void modificarExistenciasProducto(int existencias, int indexProducto) {
+        int codigoProducto = this.getBodega().getProductos().get(indexProducto).getCod();
+        this.bodega.getProductos().get(indexProducto).setCantidad(existencias);
+        this.persistencia.editarCantidadProducto(codigoProducto, existencias);
     }
 
     public ArrayList<Producto> obtenerProductos() {

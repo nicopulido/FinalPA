@@ -70,7 +70,8 @@ public class DBQuerys {
     }
 
     // SELECT TODOS LOS PROVEEDORES
-    public void allProveedores() {
+    public ArrayList<Proveedor> allProveedores() {
+        ArrayList<Proveedor> proveedores = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
 
@@ -82,12 +83,18 @@ public class DBQuerys {
                 System.out.print(resultSet.getInt("id_proveedor") + " - ");
                 System.out.print(resultSet.getInt("NIT") + " - ");
                 System.out.println(resultSet.getString("nombre"));
+                String nombre = resultSet.getString("nombre");
+                int NIT = resultSet.getInt("NIT") ;
+                int idProveedor = resultSet.getInt("id_proveedor");
+                Proveedor proveedor = new Proveedor(NIT, nombre, idProveedor);
+                proveedores.add(proveedor);
             }
 
         } catch (SQLException e) {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
         }
+        return proveedores;
     }
 
     // INGRESAR PRODCUTO A LA BASE DE DATOS
