@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class Menu extends javax.swing.JFrame {
 
     private Controlador controlador;
+    DefaultTableModel tbModel;
 
     /**
      * Creates new form Menu
@@ -53,6 +54,15 @@ public class Menu extends javax.swing.JFrame {
         tablaProdVer = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        cajaCodProd = new javax.swing.JTextField();
+        jlabelNom = new javax.swing.JLabel();
+        jlabelProv = new javax.swing.JLabel();
+        cajaNomProd = new javax.swing.JTextField();
+        comboProv = new javax.swing.JComboBox<>();
+        botonRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -106,6 +116,7 @@ public class Menu extends javax.swing.JFrame {
         });
         panelVerProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel7.setText("VER PRODUCTOS");
         panelVerProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 190, 30));
@@ -120,9 +131,10 @@ public class Menu extends javax.swing.JFrame {
         });
         panelBuscarProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel8.setText("BUSCAR PRODUCTOS");
-        panelBuscarProductos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, 30));
+        panelBuscarProductos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
 
         jPanel2.add(panelBuscarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 270, 50));
 
@@ -190,15 +202,104 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel9.setText("REGISTRO DE PRODUCTO");
+
+        jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel10.setText("Código");
+
+        cajaCodProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaCodProdActionPerformed(evt);
+            }
+        });
+
+        jlabelNom.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jlabelNom.setText("Nombre: ");
+
+        jlabelProv.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jlabelProv.setText("Proveedor:");
+
+        cajaNomProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cajaNomProdActionPerformed(evt);
+            }
+        });
+
+        comboProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "proveedor A", "proveedor B", "proveedor C", "proveedor D", "proveedor E" }));
+
+        botonRegistrar.setText("REGISTRAR");
+        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cajaCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlabelNom, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlabelProv, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cajaNomProd, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(comboProv, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(75, 75, 75))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel9)
+                .addGap(70, 70, 70)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(cajaCodProd))
+                .addGap(62, 62, 62)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlabelNom)
+                    .addComponent(cajaNomProd))
+                .addGap(63, 63, 63)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlabelProv)
+                    .addComponent(comboProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab3", jPanel8);
@@ -256,13 +357,39 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel tbModel = (DefaultTableModel) tablaProdVer.getModel();
+        tbModel = (DefaultTableModel) tablaProdVer.getModel();
+        actualizarTabla();
+//        ArrayList<Producto> productos = controlador.obtenerProductos();
+//        for (Producto producto : productos) {
+//            tbModel.addRow(convertirProductoAFila(producto));
+//        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void cajaCodProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaCodProdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaCodProdActionPerformed
+
+    private void cajaNomProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaNomProdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cajaNomProdActionPerformed
+
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+        int codigo = Integer.parseInt(cajaCodProd.getText());
+        String nombre = cajaNomProd.getText();
+        int indexProveedor = comboProv.getSelectedIndex();
+        this.controlador.crearProducto(codigo, nombre, indexProveedor);
+        actualizarTabla();
+        cajaCodProd.setText("");
+        cajaNomProd.setText("");
+    }//GEN-LAST:event_botonRegistrarActionPerformed
+
+    public void actualizarTabla(){
+        tbModel.setRowCount(0);
         ArrayList<Producto> productos = controlador.obtenerProductos();
         for (Producto producto : productos) {
             tbModel.addRow(convertirProductoAFila(producto));
         }
-    }//GEN-LAST:event_formWindowOpened
-
+    }
     private Object[] convertirProductoAFila(Producto producto) {
         return new Object[]{producto.getIdProducto(), producto.getCod(), producto.getNombre(), producto.getCantidad(), producto.getProveedor()};
         // Reemplaza getAtributo1(), getAtributo2(), getAtributo3() con los métodos reales de la clase Producto
@@ -272,7 +399,12 @@ public class Menu extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonRegistrar;
+    private javax.swing.JTextField cajaCodProd;
+    private javax.swing.JTextField cajaNomProd;
+    private javax.swing.JComboBox<String> comboProv;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -280,13 +412,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jlabelNom;
+    private javax.swing.JLabel jlabelProv;
     private javax.swing.JPanel panelBuscarProductos;
     private javax.swing.JPanel panelRegistrarProductos;
     private javax.swing.JPanel panelVerProductos;
