@@ -1,7 +1,4 @@
 build/Constants
-build/Controlador
-build/Modelo
-build/vista
 src/Constants
 src/Constants/Constants.java
 /nbproject/
