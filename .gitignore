@@ -1,9 +1,8 @@
-/src/Constants/
+build/Constants
+build/Controlador
+build/Modelo
+build/vista
+src/Constants
+src/Constants/Constants.java
 /nbproject/
 /test/
-/build/classes/Constants/
-/build/classes/Controlador/
-/build/classes/Modelo/
-/build/classes/Vista/
-.netbeans_automatic_build
-.netbeans_update_resources
