@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class DBQuerys {
 
-
     // SELECT TODOS LOS PRODUCTOS
     public ArrayList<Producto> allProducts() {
         ArrayList<Producto> productos = new ArrayList<>();
@@ -28,7 +27,7 @@ public class DBQuerys {
                 System.out.print(resultSet.getString("nombre") + " - ");
                 System.out.print(resultSet.getInt("cantidad") + " - ");
                 System.out.println(resultSet.getString("proveedor"));
-*/
+                 */
                 String nombre = resultSet.getString("nombre");
                 int cod = resultSet.getInt("cod");
                 int idProducto = resultSet.getInt("id_producto");
@@ -91,7 +90,7 @@ public class DBQuerys {
                 System.out.print(resultSet.getInt("NIT") + " - ");
                 System.out.println(resultSet.getString("nombre"));
                 String nombre = resultSet.getString("nombre");
-                int NIT = resultSet.getInt("NIT") ;
+                int NIT = resultSet.getInt("NIT");
                 int idProveedor = resultSet.getInt("id_proveedor");
                 Proveedor proveedor = new Proveedor(NIT, nombre, idProveedor);
                 proveedores.add(proveedor);
@@ -299,6 +298,34 @@ public class DBQuerys {
             buscarProducto.setInt(2, codigo);
 
             buscarProducto.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: ");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void eliminarProducto(String nombre) {
+        try {
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+
+            PreparedStatement eliminarProducto = connection.prepareStatement("DELETE FROM " + Constants.DB_TABLE_PRODUCTOS + " WHERE nombre = ?");
+            eliminarProducto.setString(1, nombre);
+
+            eliminarProducto.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: ");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void eliminarProducto(int codigo) {
+        try {
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+
+            PreparedStatement eliminarProducto = connection.prepareStatement("DELETE FROM " + Constants.DB_TABLE_PRODUCTOS + " WHERE cod = ?");
+            eliminarProducto.setInt(1, codigo);
+
+            eliminarProducto.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error: ");
             System.out.println(e.getMessage());
