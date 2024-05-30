@@ -55,6 +55,14 @@ public class Menu extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,6 +135,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo-azul-degradado-8259614_1280.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 780, 90));
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -206,12 +220,14 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panelVerProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelVerProductosMouseClicked
+
         jTabbedPane1.setSelectedIndex(0);
-        DefaultTableModel tbModel = (DefaultTableModel) tablaProdVer.getModel();
-        ArrayList<Producto> productos = controlador.obtenerProductos();
-        for (Producto producto : productos) {
-            tbModel.addRow(convertirProductoAFila(producto));
-        }
+
+//        DefaultTableModel tbModel = (DefaultTableModel) tablaProdVer.getModel();
+//        ArrayList<Producto> productos = controlador.obtenerProductos();
+//        for (Producto producto : productos) {
+//            tbModel.addRow(convertirProductoAFila(producto));
+//        }
     }//GEN-LAST:event_panelVerProductosMouseClicked
 
     private void panelBuscarProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBuscarProductosMouseClicked
@@ -221,6 +237,31 @@ public class Menu extends javax.swing.JFrame {
     private void panelRegistrarProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRegistrarProductosMouseClicked
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_panelRegistrarProductosMouseClicked
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+//        DefaultTableModel tbModel = (DefaultTableModel) tablaProdVer.getModel();
+//        ArrayList<Producto> productos = controlador.obtenerProductos();
+//        for (Producto producto : productos) {
+//            tbModel.addRow(convertirProductoAFila(producto));
+//        }
+//        tbModel.
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+//       DefaultTableModel tbModel = (DefaultTableModel) tablaProdVer.getModel();
+//        ArrayList<Producto> productos = controlador.obtenerProductos();
+//        for (Producto producto : productos) {
+//            tbModel.addRow(convertirProductoAFila(producto));
+//        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DefaultTableModel tbModel = (DefaultTableModel) tablaProdVer.getModel();
+        ArrayList<Producto> productos = controlador.obtenerProductos();
+        for (Producto producto : productos) {
+            tbModel.addRow(convertirProductoAFila(producto));
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     private Object[] convertirProductoAFila(Producto producto) {
         return new Object[]{producto.getIdProducto(), producto.getCod(), producto.getNombre(), producto.getCantidad(), producto.getProveedor()};
