@@ -9,7 +9,7 @@ public class Vista {
 
     public Vista(Controlador controlador) {
         this.login = new Login(controlador);
-        this.menu = new Menu();
+        this.menu = new Menu(controlador);
         this.login.setVisible(true);
     }
 
